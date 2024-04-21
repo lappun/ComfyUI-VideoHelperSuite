@@ -4,7 +4,7 @@ import torch
 import comfy.utils
 
 from .utils import BIGMIN, BIGMAX
-
+from typing import List, Union, Tuple, Dict
 
 class MergeStrategies:
     MATCH_A = "match A"
@@ -390,7 +390,7 @@ class DuplicateLatents:
     RETURN_NAMES = ("LATENT", "count",)
     FUNCTION = "duplicate_input"
 
-    def duplicate_input(self, latents: dict[str, Tensor], multiply_by: int):
+    def duplicate_input(self, latents: Dict[str, Tensor], multiply_by: int):
         new_latents = latents.copy()
         full_latents = []
         for n in range(0, multiply_by):

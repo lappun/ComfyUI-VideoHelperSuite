@@ -9,7 +9,7 @@ import folder_paths
 from comfy.utils import common_upscale
 from .logger import logger
 from .utils import BIGMAX, DIMMAX, calculate_file_hash, get_sorted_dir_files_from_directory, get_audio, lazy_eval, hash_path, validate_path
-
+from typing import List, Union, Tuple, Dict
 
 video_extensions = ['webm', 'mp4', 'mkv', 'gif']
 
@@ -19,7 +19,7 @@ def is_gif(filename) -> bool:
     return len(file_parts) > 1 and file_parts[-1] == "gif"
 
 
-def target_size(width, height, force_size, custom_width, custom_height) -> tuple[int, int]:
+def target_size(width, height, force_size, custom_width, custom_height) -> Tuple[int, int]:
     if force_size == "Custom":
         return (custom_width, custom_height)
     elif force_size == "Custom Height":
